@@ -1,0 +1,52 @@
+name: AKS Deployment
+
+on:
+  workflow_run:
+    workflows: ["CD back end && front end"]
+    types:
+      - completed 
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Login via Az module
+        uses: azure/login@v1
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+          enable-AzPSSession: true 
+    
+      - name: Select Azure subscription
+        run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Get AKS credentials
+        run: az aks get-credentials --resource-group stageDevops --name stage
+
+    
+
+      - name: Deploy DB postgre
+        run: |
+          cd manifests
+          kubectl apply -f db-deployment.yaml
+          kubectl apply -f db-service.yaml
+
+      - name: Deploy back end 
+        run: |
+          cd manifests
+          kubectl apply -f backdeployment.yml
+          kubectl apply -f backservice.yml
+
+      - name: Deploy front end 
+        run: |
+          cd manifests
+          kubectl apply -f frontend-deployment.yaml
+          kubectl apply -f frontend-service.yaml
+
+    
+       
