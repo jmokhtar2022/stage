@@ -41,5 +41,5 @@ jwtExpiration: 86400
 
 # Set the Application Insights instrumentation key
 azure:
-  application-insights:
+  "application-insights":
     instrumentation-key: 04dc1ea3-cee7-48ec-8042-8c736ac75cd5
