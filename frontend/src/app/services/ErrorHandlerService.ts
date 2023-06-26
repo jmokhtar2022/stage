@@ -1,5 +1,6 @@
 import { MyMonitoringService } from "./logging.service";
 import { ErrorHandler} from '@angular/core';
+import { Injectable } from '@angular/core';
 @Injectable()
 export class ErrorHandlerService extends ErrorHandler {
     loggingService: any;
@@ -13,6 +14,3 @@ export class ErrorHandlerService extends ErrorHandler {
     }
 }
 
-function Injectable(): (target: typeof ErrorHandlerService) => void | typeof ErrorHandlerService {
-    throw new Error("Function not implemented.");
-}

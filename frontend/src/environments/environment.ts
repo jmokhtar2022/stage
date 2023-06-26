@@ -8,7 +8,7 @@ export const environment = {
     instrumentationKey: '04dc1ea3-cee7-48ec-8042-8c736ac75cd5'
 }
 };
-export const apiUrl = '//20.14.16.137:8080/api';
+export const apiUrl = '//20.81.72.108:8080/api';
 
 /*
  * For easier debugging in development mode, you can import the following file
