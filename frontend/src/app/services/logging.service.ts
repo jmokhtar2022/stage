@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { environment } from 'src/environments/environment';
 
@@ -38,7 +39,3 @@ export class MyMonitoringService {
     this.appInsights.trackTrace({ message: message }, properties);
   }
 }
-function Injectable(): (target: typeof MyMonitoringService) => void | typeof MyMonitoringService {
-  throw new Error('Function not implemented.');
-}
-
