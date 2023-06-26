@@ -29,7 +29,7 @@ public class ShopApiApplication {
     }
 
     public static void main(String[] args) {
-            ApplicationInsights.attach();
+            
         SpringApplication.run(ShopApiApplication.class, args);
     }
 
