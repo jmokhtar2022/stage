@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class MyMonitoringService {
   appInsights: ApplicationInsights;
+
   constructor() {
     this.appInsights = new ApplicationInsights({
       config: {
@@ -22,7 +23,7 @@ export class MyMonitoringService {
   }
 
   logEvent(name: string, properties?: { [key: string]: any }) {
-    this.appInsights.trackEvent({ name: name}, properties);
+    this.appInsights.trackEvent({ name: name }, properties);
   }
 
   logMetric(name: string, average: number, properties?: { [key: string]: any }) {
@@ -34,9 +35,10 @@ export class MyMonitoringService {
   }
 
   logTrace(message: string, properties?: { [key: string]: any }) {
-    this.appInsights.trackTrace({ message: message}, properties);
+    this.appInsights.trackTrace({ message: message }, properties);
   }
-
+}
 function Injectable(): (target: typeof MyMonitoringService) => void | typeof MyMonitoringService {
-        throw new Error('Function not implemented.');
-    }
+  throw new Error('Function not implemented.');
+}
+
