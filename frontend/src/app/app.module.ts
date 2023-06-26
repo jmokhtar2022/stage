@@ -1,5 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { ErrorHandler } from '@angular/core';
+
 import { ErrorHandlerService } from './services/ErrorHandlerService';
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './parts/navigation/navigation.component';
