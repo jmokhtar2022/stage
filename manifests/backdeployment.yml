@@ -4,10 +4,6 @@ metadata:
   name: backend-deployment
   labels:
     app: backend
-  annotations:
-    co.elastic.logs/module: nginx
-    co.elastic.logs/fileset.stdout: access
-    co.elastic.logs/fileset.stderr: error
 spec:
   replicas: 1
   selector:

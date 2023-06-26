@@ -13,7 +13,7 @@ metadata:
   labels:
     k8s-app: filebeat
 rules:
-- apiGroups: [""] # "" indicates the core API group
+- apiGroups: [""]
   resources:
   - namespaces
   - pods
@@ -35,7 +35,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: filebeat
-  # should be the namespace where filebeat is running
   namespace: kube-system
   labels:
     k8s-app: filebeat
@@ -110,9 +109,7 @@ metadata:
   labels:
     k8s-app: filebeat
 data:
-  filebeat.yml: |-
-   
-
+  filebeat.yml: |
     # To enable hints based autodiscover, remove `filebeat.inputs` configuration and uncomment this:
     filebeat.autodiscover:
       providers:
@@ -128,13 +125,11 @@ data:
       - add_cloud_metadata:
       - add_host_metadata:
 
-    cloud.id: ${ELASTIC_CLOUD_ID}
-    cloud.auth: ${ELASTIC_CLOUD_AUTH}
-
     output.elasticsearch:
-      hosts: ["https://localhost:9200"]
-      username: "elastic"
-      password: "26msfy6mQu1K74zKf1E04N9O"
+      hosts: ['https://10.0.50.14:9200']
+      username: ${ELASTICSEARCH_USERNAME}
+      password: ${ELASTICSEARCH_PASSWORD}
+      ssl.verification_mode: none
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -165,25 +160,19 @@ spec:
         ]
         env:
         - name: ELASTICSEARCH_HOST
-          value: 127.0.0.1
+          value: 10.0.50.14
         - name: ELASTICSEARCH_PORT
           value: "9200"
         - name: ELASTICSEARCH_USERNAME
           value: elastic
         - name: ELASTICSEARCH_PASSWORD
           value: 26msfy6mQu1K74zKf1E04N9O
-        - name: ELASTIC_CLOUD_ID
-          value:
-        - name: ELASTIC_CLOUD_AUTH
-          value:
         - name: NODE_NAME
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
         securityContext:
           runAsUser: 0
-          # If using Red Hat OpenShift uncomment this:
-          #privileged: true
         resources:
           limits:
             memory: 200Mi
@@ -214,10 +203,7 @@ spec:
       - name: varlog
         hostPath:
           path: /var/log
-      # data folder stores a registry of read status for all files, so we don't send everything again on a Filebeat pod restart
       - name: data
         hostPath:
-          # When filebeat runs as non-root user, this directory needs to be writable by group (g+w).
           path: /var/lib/filebeat-data
           type: DirectoryOrCreate
----
