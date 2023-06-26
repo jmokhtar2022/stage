@@ -1,5 +1,5 @@
 import { MyMonitoringService } from "./logging.service";
-
+import { ErrorHandler, Injectable } from '@angular/core';
 @Injectable()
 export class ErrorHandlerService extends ErrorHandler {
     loggingService: any;
