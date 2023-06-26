@@ -40,4 +40,6 @@ jwtSecret: me.zhulin
 jwtExpiration: 86400
 
 # Set the Application Insights instrumentation key
-spring.application-insights.instrumentation-key=04dc1ea3-cee7-48ec-8042-8c736ac75cd5
+azure:
+  application-insights:
+    instrumentation-key: 04dc1ea3-cee7-48ec-8042-8c736ac75cd5
