@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: mokhtar1234/ecommerce:frontend-app
+          image: mokhtar1234/ecommerce:front-app
           ports:
             - containerPort: 80
