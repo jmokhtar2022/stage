@@ -38,4 +38,3 @@ server:
 
 jwtSecret: me.zhulin
 jwtExpiration: 86400
-
