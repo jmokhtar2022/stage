@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  appInsights: {
+    instrumentationKey: '04dc1ea3-cee7-48ec-8042-8c736ac75cd5'
+}
 };
 export const apiUrl = '//20.242.204.111:8080/api';
 

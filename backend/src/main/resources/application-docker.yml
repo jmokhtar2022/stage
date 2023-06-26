@@ -39,6 +39,3 @@ server:
 jwtSecret: me.zhulin
 jwtExpiration: 86400
 
-azure:
-  application-insights:
-    instrumentation-key: "04dc1ea3-cee7-48ec-8042-8c736ac75cd5"

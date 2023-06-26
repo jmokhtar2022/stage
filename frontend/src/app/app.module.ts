@@ -47,7 +47,11 @@ import {ProductEditComponent} from './pages/product-edit/product-edit.component'
     ],
     providers: [CookieService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+        { provide: ErrorHandler, useClass: ErrorHandlerService },
+        
+    ],
+
     bootstrap: [AppComponent]
 })
 export class AppModule {
