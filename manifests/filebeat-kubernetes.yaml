@@ -126,7 +126,7 @@ data:
       - add_host_metadata:
 
     output.elasticsearch:
-      hosts: ['https://10.0.50.14:9200']
+      hosts: ['https://10.0.15.176:9200']
       username: ${ELASTICSEARCH_USERNAME}
       password: ${ELASTICSEARCH_PASSWORD}
       ssl.verification_mode: none
@@ -160,13 +160,13 @@ spec:
         ]
         env:
         - name: ELASTICSEARCH_HOST
-          value: 10.0.50.14
+          value: 10.0.15.176
         - name: ELASTICSEARCH_PORT
           value: "9200"
         - name: ELASTICSEARCH_USERNAME
           value: elastic
         - name: ELASTICSEARCH_PASSWORD
-          value: 26msfy6mQu1K74zKf1E04N9O
+          value: 16cSb7o81tU91fldriUSV675
         - name: NODE_NAME
           valueFrom:
             fieldRef:
