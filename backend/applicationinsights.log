@@ -1,0 +1,22 @@
+2023-06-26 16:51:09.273+01:00 ERROR c.m.applicationinsights.agent - 
+*************************
+Application Insights Java Agent 3.4.14 startup failed (PID 9152)
+*************************
+
+Description:
+No connection string provided
+
+Action:
+Please provide connection string.
+
+2023-06-26 16:51:38.427+01:00 ERROR c.m.applicationinsights.agent - 
+*************************
+Application Insights Java Agent 3.4.14 startup failed (PID 6832)
+*************************
+
+Description:
+No connection string provided
+
+Action:
+Please provide connection string.
+

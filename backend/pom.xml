@@ -44,10 +44,10 @@
 
 
         <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>applicationinsights-spring-boot-starter</artifactId>
-            <version>2.6.1</version>
-        </dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>applicationinsights-runtime-attach</artifactId>
+    <version>3.4.14</version>
+</dependency>
 
 
         <dependency>
