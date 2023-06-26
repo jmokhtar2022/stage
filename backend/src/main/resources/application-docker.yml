@@ -39,7 +39,7 @@ server:
 jwtSecret: me.zhulin
 jwtExpiration: 86400
 
-applicationinsights:
+-Dapplicationinsights:
   runtime-attach:
     configuration:
       classpath:
