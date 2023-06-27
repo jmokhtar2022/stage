@@ -29,4 +29,4 @@ jobs:
           context: frontend
           file: frontend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce:front-app
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce:front-app-${{ github.sha }}

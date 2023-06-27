@@ -46,7 +46,7 @@ jobs:
           context: backend
           file: backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce:back-app
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce:back-app-${{ github.sha }}
 
   frontend:
     runs-on: ubuntu-latest
