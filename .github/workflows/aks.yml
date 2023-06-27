@@ -28,7 +28,9 @@ jobs:
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group stageDevops --name stage
 
-    
+      - name: Modify backend deployment file
+        run: |
+          sed -i "s|image: mokhtar1234/ecommerce:back-app-.*|image: mokhtar1234/ecommerce:back-app-${{ github.sha }}|" manifests/backdeployment.yml
 
       - name: Deploy DB postgre
         run: |
@@ -42,11 +44,12 @@ jobs:
           kubectl apply -f backdeployment.yml
           kubectl apply -f backservice.yml
 
+      - name: Modify frontend deployment file
+        run: |
+          sed -i "s|image: mokhtar1234/ecommerce:front-app-.*|image: mokhtar1234/ecommerce:front-app-${{ github.sha }}|" manifests/frontend-deployment.yaml
+
       - name: Deploy front end 
         run: |
           cd manifests
           kubectl apply -f frontend-deployment.yaml
           kubectl apply -f frontend-service.yaml
-
-    
-       
