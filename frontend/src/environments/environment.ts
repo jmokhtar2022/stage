@@ -4,9 +4,6 @@
 
 export const environment = {
   production: false,
-  appInsights: {
-    instrumentationKey: '04dc1ea3-cee7-48ec-8042-8c736ac75cd5'
-}
 };
 export const apiUrl = '//40.88.223.112:8080/api';
 
