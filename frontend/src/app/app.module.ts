@@ -22,6 +22,7 @@ import {OrderDetailComponent} from './pages/order-detail/order-detail.component'
 import {ProductListComponent} from './pages/product-list/product.list.component';
 import {UserDetailComponent} from './pages/user-edit/user-detail.component';
 import {ProductEditComponent} from './pages/product-edit/product-edit.component';
+import { MyMonitoringService } from './services/logging.service';
 
 @NgModule({
     declarations: [
@@ -51,7 +52,7 @@ import {ProductEditComponent} from './pages/product-edit/product-edit.component'
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
         {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
         { provide: ErrorHandler, useClass: ErrorHandlerService },
-        
+        MyMonitoringService,
     ],
 
     bootstrap: [AppComponent]
