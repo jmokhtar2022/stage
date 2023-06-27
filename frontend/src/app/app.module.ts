@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {NavigationComponent} from './parts/navigation/navigation.component';
 import {CardComponent} from './pages/card/card.component';
@@ -19,6 +19,8 @@ import {OrderDetailComponent} from './pages/order-detail/order-detail.component'
 import {ProductListComponent} from './pages/product-list/product.list.component';
 import {UserDetailComponent} from './pages/user-edit/user-detail.component';
 import {ProductEditComponent} from './pages/product-edit/product-edit.component';
+import { MyMonitoringService } from './services/logging.service';
+import { ErrorHandlerService } from './services/ErrorHandlerService.service';
 
 @NgModule({
     declarations: [
@@ -44,9 +46,10 @@ import {ProductEditComponent} from './pages/product-edit/product-edit.component'
         HttpClientModule,
 
     ],
-    providers: [CookieService,
+    providers: [CookieService,MyMonitoringService,
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+        { provide: ErrorHandler, useClass: ErrorHandlerService },
     ],
 
     bootstrap: [AppComponent]

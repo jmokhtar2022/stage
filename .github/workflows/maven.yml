@@ -63,7 +63,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend
-          npm ci
+          rm package-lock.json
+          npm install
 
       - name: Build frontend
         run: |
