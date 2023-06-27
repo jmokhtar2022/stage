@@ -4,6 +4,13 @@ export const environment = {
     instrumentationKey: '04dc1ea3-cee7-48ec-8042-8c736ac75cd5',
     config: {
       autoTrackPageVisitTime: true,
+      enableAvailabilityMonitoring: true,
+      disableFetchTracking: false,
+      disableCorrelationHeaders: false,
+      disableAjaxErrorTracking: false,
+      disableExceptionTracking: false,
+      enableAutoRouteTracking: true,
+      enableAutoRoutePings: true,
     }
 }
 };
