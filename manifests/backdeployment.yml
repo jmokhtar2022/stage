@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: mokhtar1234/ecommerce:back-app
+          image: mokhtar1234/ecommerce:back-app-${{ github.sha }}
           ports:
             - containerPort: 8080
           env:
