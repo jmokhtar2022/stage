@@ -36,25 +36,4 @@ export class MyMonitoringService {
   logTrace(message: string, properties?: { [key: string]: any }) {
     this.appInsights.trackTrace({ message: message}, properties);
   }
-
-  logRequest(
-    name: string,
-    url: string,
-    startTime: Date,
-    duration: number,
-    responseCode: number,
-    success: boolean,
-    properties?: { [key: string]: any }
-  ) {
-    this.appInsights.trackRequest({
-      name: name,
-      url: url,
-      startTime: startTime,
-      duration: duration,
-      responseCode: responseCode,
-      success: success
-    }, properties);
-  }
-
-
 }
