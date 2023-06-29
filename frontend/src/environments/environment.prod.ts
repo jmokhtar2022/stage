@@ -9,7 +9,6 @@ export const environment = {
       disableCorrelationHeaders: false,
       disableAjaxErrorTracking: false,
       disableExceptionTracking: false,
-      enableAutoRouteTracking: true,
       enableAutoRoutePings: true,
     }
 }
