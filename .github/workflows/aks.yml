@@ -53,3 +53,8 @@ jobs:
           cd manifests
           kubectl apply -f frontend-deployment.yaml
           kubectl apply -f frontend-service.yaml
+      - name: Invoke deployment hook
+        uses: distributhor/workflow-webhook@v3
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }} 

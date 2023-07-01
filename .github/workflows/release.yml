@@ -53,4 +53,9 @@ jobs:
           file: frontend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce:front-app-${{ github.sha }}
+      - name: Invoke deployment hook
+        uses: distributhor/workflow-webhook@v3
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }} 
         
