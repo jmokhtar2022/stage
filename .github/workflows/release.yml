@@ -7,6 +7,30 @@ on:
       - completed  
 
 jobs:
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      
+      - name: Install dependencies
+        run: |
+          cd frontend
+          rm package-lock.json
+          npm install
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build 
+
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -30,25 +54,4 @@ jobs:
           file: frontend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ecommerce:front-app-${{ github.sha }}
-  frontend:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      
-      - name: Install dependencies
-        run: |
-          cd frontend
-          rm package-lock.json
-          npm install
-
-      - name: Build frontend
-        run: |
-          cd frontend
-          npm run build        
+        
