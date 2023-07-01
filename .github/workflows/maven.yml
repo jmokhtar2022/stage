@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: CI/CD backend 
+name: CI/CD back end 
 on:
   push:
     branches: [ "main" ]
