@@ -13,4 +13,4 @@ export const environment = {
     }
 }
 };
-export const apiUrl = '//4.157.178.132:8080/api';
+export const apiUrl = '//20.82.252.225:8080/api';
