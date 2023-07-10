@@ -14,8 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Select Azure subscription
-        run: az account set --subscription cd153b82-f92a-4526-905b-c52345c36e3e
+      - name: Set up Azure CLI
+        uses: azure/setup-az-cli@v1
+      
+      - name: Login to Azure
+        run: az login
 
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group Stage --name stageAks
