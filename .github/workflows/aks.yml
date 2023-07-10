@@ -1,14 +1,11 @@
 name: AKS Deploymentt
 
 on:
-  workflow_run:
-    workflows: ["CI/CD front end"]
-    types:
-      - completed 
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-permissions:
-  id-token: write
-  contents: read
 
 jobs:
   deploy:
@@ -16,12 +13,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Login via Az module
-        uses: azure/login@v1
-        with:
-          creds: ${{secrets.AZURE_CREDENTIALS}}
-          enable-AzPSSession: true 
-    
+      
       - name: Select Azure subscription
         run: az account set --subscription ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
