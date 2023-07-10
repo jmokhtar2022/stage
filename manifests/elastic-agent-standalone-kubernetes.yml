@@ -12,9 +12,9 @@ data:
       default:
         type: elasticsearch
         hosts:
-          - 'https://10.0.209.97:9200'
+          - 'https://10.0.67.8:9200'
         username: 'elastic'
-        password: 'f7H7yaO16nvAf3R3Hf37z61e'
+        password: 'c55OJ6q8peV7vDO6Whh14Y95'
         ssl.verification_mode: none
     inputs:
       - id: logfile-system-9bc77020-1359-11ee-8959-494e2cf249ae

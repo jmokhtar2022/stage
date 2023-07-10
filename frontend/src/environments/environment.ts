@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appInsights: {
-    instrumentationKey: '04dc1ea3-cee7-48ec-8042-8c736ac75cd5'
+    instrumentationKey: '9eaf99b6-eaec-45aa-94a3-c1699cc6523e'
 }
 };
 export const apiUrl = '//20.82.252.225:8080/api';
