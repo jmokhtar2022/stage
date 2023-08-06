@@ -1,51 +1,40 @@
 name: AKS Deploymentt
-
 on:
   workflow_run:
     workflows: ["CI/CD front end"]
     types:
       - completed 
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Install Azure CLI
         run: |
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
       - name: Login to Azure
         run: az login
-
       - name: Set Azure subscription
         run: az account set --subscription cd153b82-f92a-4526-905b-c52345c36e3e
-      
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group Stage --name stageAks
-
       - name: Modify backend deployment file
         run: |
           sed -i "s|image: mokhtar1234/ecommerce:back-app-.*|image: mokhtar1234/ecommerce:back-app-${{ github.sha }}|" manifests/backdeployment.yml
-
       - name: Deploy DB postgre
         run: |
           cd manifests
           kubectl apply -f db-deployment.yaml
           kubectl apply -f db-service.yaml
-
       - name: Deploy back end 
         run: |
           cd manifests
           kubectl apply -f backdeployment.yml
           kubectl apply -f backservice.yml
-
       - name: Modify frontend deployment file
         run: |
           sed -i "s|image: mokhtar1234/ecommerce:front-app-.*|image: mokhtar1234/ecommerce:front-app-${{ github.sha }}|" manifests/frontend-deployment.yaml
-
       - name: Deploy front end 
         run: |
           cd manifests
